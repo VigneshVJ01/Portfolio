@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Vignesh V J Portfolio</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="assets/css/meyawo.css">
+    <link rel="stylesheet" href="path_to_your_css_file.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<!-- Custom CSS for 3D Image Effect -->
+<style>
+
+html {
+  scroll-behavior: smooth;
+}
+
+    .header-title {
+        font-size: 2.5rem; /* Adjust font size as needed */
+        white-space: nowrap; /* Prevent line breaks within the span */
+        text-align: left; /* Align text to the left */
+    }
+
+    .header-content {
+        text-align: left; /* Align the entire header content to the left */
+        margin-left: 20%; /* Adjust the left margin to move content slightly left */
+    }
+
+    .about-img-holder {
+        text-align: right; /* Align image to the right */
+    }
+
+    .social-icons {
+    display: flex;
+    justify-content: center; /* Centers the icons horizontally */
+    align-items: center;    /* Centers the icons vertically if needed */
+    gap: 20px;              /* Adds space between the icons */
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Slightly enlarges the icon on hover */
+}
+
+
+    .about-img {
+        max-width: 100%; /* Ensure image does not exceed its container */
+        height: 600px; /* Maintain aspect ratio */
+        width: 250px; /* Shorten the image width */
+        border-radius: 50px; /* Optional: add some rounding to the image */
+    }
+
+    @media (max-width: 768px) {
+        .about-img-holder {
+            text-align: center; /* Center image on smaller screens */
+        }
+
+        .about-img {
+            width: 200px; /* Smaller width on mobile */
+        }
+    }
+
+    .social-icons {
+        display: flex; /* Use flexbox to align items */
+        justify-content: left; /* Center items horizontally */
+        gap: 50px; /* Space between items */
+        margin-top: 20px;
+    }
+
+    /* Spacer CSS */
+    .spacer {
+        margin: 50px 0; /* Adjust margin as needed */
+    }
+
+    .social-icons img {
+        display: block; /* Ensure images do not have extra space below */
+    }
+
+        .img-3d {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7); /* Darker shadow for depth */
+            transform: perspective(1000px) rotateX(5deg) rotateY(-5deg); /* Slight rotation for 3D effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effect */
+        }
+
+        .img-3d:hover {
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05); /* Zoom and straighten on hover */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); /* Enhance shadow on hover */
+        }
+
+        .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #f8f9fa; /* Optional: Adjust the color as needed */
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+    /* Wrapper for the Skills Section */
+    .skills-wrapper {
+        background-color: rgba(0, 0, 0, 0.1); /* Adjust to match internship background */
+        padding: 20px; /* Space around the icons */
+        border-radius: 8px; /* Optional: rounded corners for the rectangle */
+        display: flex; /* Align the icons horizontally */
+        justify-content: center; /* Center the icons inside the rectangle */
+        align-items: center; /* Vertically align icons */
+    }
+
+    /* Skills section overall container */
+    .skills-container {
+        overflow: hidden;
+        position: relative;
+        height: 100px; /* Adjust as needed */
+        width: 100%; /* Full width for responsiveness */
+        background: #f7f7f7; /* Optional: background for visibility */
+        display: flex;
+        align-items: center;
+    }
+
+    /* Skills section */
+    .skills-section {
+        text-align: center;
+        margin: 50px 0;
+    }
+
+    .skills-section h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    /* Background rectangle for skills */
+    .skills-background {
+        background-color: rgba(0, 0, 0, 0.05); /* Light grey background */
+        padding: 20px 0; /* Space above and below icons */
+        border-radius: 8px; /* Optional: Rounded corners for the background */
+        overflow: hidden; /* Ensures icons don't spill outside */
+    }
+
+    /* Slider Container */
+    .skills-slider {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 70px; /* Ensure consistent height for the slider */
+        cursor: grab; /* Change cursor to show dragging is possible */
+        display: flex;
+        justify-content: center; /* Center the icons horizontally */
+        align-items: center; /* Align icons vertically */
+        position: relative;
+    }
+
+    /* Slider Track (where the icons move) */
+    .slider-track {
+        display: flex;
+        animation: slide-to-left 15s linear infinite; /* Continuous sliding animation */
+        gap: 20px; /* Spacing between icons */
+        flex-wrap: nowrap; /* Prevent the icons from wrapping */
+    }
+
+    /* Skill icons */
+    .skill-icon img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        transition: transform 0.3s;
+        margin: 0 10px; /* Space between icons */
+    }
+
+    .skill-icon img:hover {
+        transform: scale(1.2); /* Slight zoom on hover */
+    }
+
+    /* Keyframe animation for sliding */
+    @keyframes slide-to-left {
+        0% {
+            transform: translateX(100%); /* Start fully from the right */
+        }
+        100% {
+            transform: translateX(-100%); /* End fully to the left */
+        }
+    }
+
+    /* Additional rule to make the icons seamlessly repeat */
+    .skills-slider .slider-track {
+        display: flex;
+        gap: 20px;
+        animation: slide-to-left 15s linear infinite;
+    }
+    
+    /* Ensure all portfolio images have the same dimensions */
+    .portfolio-card-img {
+        width: 200%; /* Ensures responsiveness */
+        height: 300px; /* Set a fixed height */
+        object-fit: cover; /* Ensures the images are scaled and cropped to fit the container without distortion */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+        display: block; /* Ensures no inline space around images */
+    }
+
+    /* Maintain aspect ratio for responsiveness */
+    .portfolio-card {
+        display: block;
+        position: relative;
+        overflow: hidden; /* Ensures no content spills outside */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: justify;
+    }
+
+    .portfolio-card-caption p {
+        font-size: 0.8rem;
+        color: #666;
+        padding: 10px;
+        text-align: justify; /* Justify the paragraph text */
+        max-width: 100%; /* Make sure the text does not overflow */
+        margin: 0;
+        
+    }
+
+    .portfolio-card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .portfolio-card:hover .portfolio-card-overlay {
+        opacity: 1;
+    }
+
+    .education-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    /* Section Styling */
+    .section-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    }
+
+    /* Section Styling */
+    .section-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    }
+
+    /* Internship Container */
+    .internship-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle grey background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px; /* Adds space between title and grey box */
+    }
+
+    /* Title Styling */
+    #internship .section-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 20px; /* Space between title and grey box */
+    }
+
+    /* Slideshow Box */
+    .slideshow-box {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    }
+
+    .slideshow-box {
+        margin-bottom: 20px;
+        border: 1px solid black; /* Adds a thick black border */
+
+    }
+
+    .slideshow-images {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    object-position: right center; /* Adjust image to prevent left side coverage */
+    position: absolute;
+    animation: slideshow 9s infinite;
+    top: 0;
+    left: 0;
+    }
+
+    .slideshow-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    }
+
+    /* Animation */
+    @keyframes slideshow {
+    0%, 33% {
+        transform: translateX(0%);
+    }
+    34%, 66% {
+        transform: translateX(-100%);
+    }
+    67%, 100% {
+        transform: translateX(-200%);
+    }
+    }
+
+    /* Right Details */
+    .internship-details {
+    flex: 1;
+    }
+
+    .internship-details h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #0f0d0d;
+    }
+
+    .internship-details p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #2b2a2a;
+    text-align: justify;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 767px) {
+    .internship-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    }
+
+    .internship-container {
+        margin-bottom: 30px; /* Adds space between internship sections */
+    }
+    /* Certificates Section */
+    #certificates .certificates-container {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100%; /* Full height of its container */
+    }
+
+    /* Slideshow Box for Certificates */
+    #certificates .slideshow-box {
+        width: 80%; /* Keep the box size as it is */
+        height: 400px;
+        overflow: hidden; /* Hide overflowing images */
+        position: relative; /* Relative positioning for slideshow */
+    }
+
+    /* Slideshow Images */
+    #certificates .slideshow-images {
+        display: flex;
+        width: 100%;
+        animation: slideShow 30s infinite; /* Control slideshow duration */
+    }
+
+    /* Individual certificate image styling */
+    #certificates .slideshow-images img {
+        width: 100%; /* Images will fit the box */
+        height: 100%; /* Stretch to fit the height */
+        object-fit: contain; /* Maintain aspect ratio */
+    }
+
+    /* Slideshow Animation */
+    @keyframes slideShow {
+        0% { transform: translateX(0); }
+        14% { transform: translateX(0); }
+        28% { transform: translateX(-100%); }
+        42% { transform: translateX(-200%); }
+        56% { transform: translateX(-300%); }
+        70% { transform: translateX(-400%); }
+        84% { transform: translateX(-500%); }
+        100% { transform: translateX(-600%); }
+    }
+
+    /* Slideshow Images */
+    #certificates .slideshow-images {
+        display: flex;
+        width: 100%;
+        animation: slideShow 30s infinite; /* Control slideshow duration */
+    }
+
+    /* Pause animation on hover */
+    #certificates .slideshow-images:hover {
+        animation-play-state: paused; /* Pause the animation when hovered */
+    }
+
+    .footer {
+    text-align: center; /* Centers the text horizontally */
+    padding: 10px; /* Adds padding around the text */
+    background-color: #f8f9fa; /* Light background color */
+    font-size: 16px; /* Adjusts the font size */
+    font-weight: bold; /* Makes the text bold */
+    margin: 0; /* Ensures no unwanted margins */
+    position: relative; /* Makes it adaptable for different layouts */
+}
+
+
+</style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+<!-- Page Navbar -->
+<nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+    <div class="container">
+        <a class="logo" href="#">Portfolio</a>
+        <ul class="nav">
+            <li class="item">
+                <a class="link" href="#home">Home</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#about">About</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#projects">Projects</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#skills">Skills</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#internship">Internship</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#certificates">Certificates</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#education">Education</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#Achivements">Achivements</a>
+            </li>
+            <li class="item">
+                <a class="link" href="#contact">Contact</a>
+            </li>
+            <li class="item ml-md-3">
+                <a href="https://drive.google.com/file/d/1aiNeiA-STea2auIZlq5X19X-ayqu3cyb/view?usp=drivesdk" class="btn btn-primary">Resume</a>
+            </li>
+        </ul>
+        <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+            <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+            </div>
+        </a>
+    </div>
+</nav>
+<!-- End of Page Navbar -->
+
+<!-- page header -->
+<header id="home" class="header">
+    <div class="overlay"></div>
+    <div class="header-content container">
+        <h1 class="header-title">
+            <span class="up">HI!</span>
+            <span class="down">I am Vignesh V J</span>
+        </h1>
+        
+        <p class="header-subtitle"> SOFTWARE ENGINEER</p>
+
+        <button class="btn btn-primary" > 
+            <a href="#projects" style="color: white;">Visit My Work</a>
+        </button>
+    </div>
+</header>
+<!-- end of page header -->
+<!-- about section -->
+<section class="section pt-0" id="about">
+    <!-- container -->
+    <div class="container">
+        <!-- about wrapper -->
+        <div class="row align-items-center">
+            <!-- About caption -->
+            <div class="col-md-6">
+                <div class="about-caption text-center">
+                    <p class="section-subtitle">Who Am I ?</p>
+                    <h2 class="section-title mb-3"><u>About Me</u></h2>
+                    <p class="text-md-left">
+                        B.Tech Computer Science graduate with a strong background in software development and programming. 
+                        Experienced in <strong>C, Python, Java, and well-versed in web development using HTML, CSS, and JavaScript.</strong>
+                        Known for exceptional problem-solving skills, teamwork, and a deep passion for technology. 
+                        Highly adaptable, with a quick learning curve for new technologies, and committed to delivering innovative solutions. 
+                        Ready to contribute to complex projects, drive results, and thrive in a fast-paced tech environment.
+                    </p>
+                    <div class="spacer">
+                        <button class="btn btn-primary">
+                            <a href="https://drive.google.com/file/d/1aiNeiA-STea2auIZlq5X19X-ayqu3cyb/view?usp=drivesdk" style="color: white;">Download Resume</a>
+                        </button>  
+                    </div>
+                    <!-- GitHub, LinkedIn, and Gmail Icons -->
+                    <div class="social-icons d-flex justify-content-center mt-4">
+                        <a href="https://github.com/VigneshVJ01" target="_blank" class="mx-3">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 40px; height: 40px;">
+                        </a>
+                        <a href="https://www.linkedin.com/in/vignesh-vj-b9ba23249/" target="_blank" class="mx-3">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 40px; height: 40px;">
+                        </a>
+                        <a href="mailto:vjvignesh277@gmail.com" class="mx-3">
+                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" style="width: 40px; height: 40px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- end of About caption -->
+
+            <!-- About image -->
+            <div class="col-md-6">
+                <div class="about-img-holder text-center">
+                    <img src="assets/imgs/vignesh.jpg" 
+                        class="about-img img-fluid" 
+                        alt="Profile Picture">
+                </div>
+            </div>
+            <!-- end of About image -->
+        </div><!-- end of about wrapper -->
+    </div><!-- end of container -->
+</section> <!-- end of about section -->
+
+<!-- Project section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h6 class="section-title mb-6 text-center"><u>Projects</u></h6>
+
+    <!-- Zoo Management System -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="assets/imgs/Zoo.png" 
+                alt="Zoo Management System" 
+                class="img-fluid rounded img-3d">
+        </div>
+        <div class="col-md-6">
+            <h4>Zoo Management System</h4>
+            <p>
+                "I developed a Zoo Management System using HTML, CSS, JavaScript, React.js, Node.js, and PHP. The project features user pages like Home, Animals, Adoption, 
+                and Ticket Booking, while the admin interface includes tools for managing animals, bookings, payments, and customer inquiries. The system ensures smooth 
+                operations and a user-friendly experience for both visitors and administrators."
+            </p>
+            <a href="https://github.com/VigneshVJ01/Zoo-Management-System/tree/master" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 40px; height: 40px;"> <strong><u>Code</u></strong>
+            </a>
+        </div>
+    </div><!-- end of Zoo Management System -->
+
+    <!-- Restaurant Management System -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="assets/imgs/hotel.png" 
+                alt="Restaurant Management System" 
+                class="img-fluid rounded img-3d">
+        </div>
+        <div class="col-md-6">
+            <h4>Restaurant Management System</h4>
+            <p>
+                "I developed a Restaurant Management System with both user and admin interfaces. The user end includes Home, Restaurant, Order, and Menu pages. The admin end features 
+                tools for managing orders, menus, and restaurant details. The system utilizes HTML, CSS, JavaScript, React.js, Node.js, and PHP for a complete management solution."
+            </p>
+            <a href="https://github.com/VigneshVJ01/Project-Restaurant-management-system/tree/master" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 40px; height: 40px;"> <strong><u>Code</u></strong>
+            </a>
+        </div>
+    </div><!-- end of Restaurant Management System -->
+
+    <!-- Java Project -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="assets/imgs/Screenshot (189).png" 
+                alt="Java Project" 
+                class="img-fluid rounded img-3d">
+        </div>
+        <div class="col-md-6">
+            <h4>Java Project</h4>
+            <p>
+                "I developed a Java-based ATM banking system that simulates account management and transaction processes. I implemented user authentication, account creation, and functionalities
+                for deposits, withdrawals, and transfers. This involved designing a secure login system, handling transactions, and providing users with a simple, text-based interface to interact
+                with their accounts. The project focused on ensuring data integrity and user-friendly operations."                </p>
+            <a href="https://github.com/VigneshVJ01/ATM-----Project.git" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 40px; height: 40px;"> <strong><u>Code</u></strong>
+            </a>
+        </div>
+    </div><!-- end of Java Project -->
+</div><!-- end of container -->
+</section><!-- end of portfolio section -->
+
+
+<!-- Skills section -->
+<section class="section" id="skills">
+    <div class="container">
+        <h6 class="section-title mb-6 text-center"><u>Skills</u></h6>
+        <!-- Background container -->
+        <div class="skills-background">
+            <div class="skills-slider">
+                <div class="slider-track">
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png" alt="Java" title="Java">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/c-programming.png" alt="C" title="C">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" title="Python">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" alt="HTML" title="HTML">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS" title="CSS">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/javascript--v1.png" alt="JavaScript" title="JavaScript">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" alt="MySQL" title="MySQL">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/git.png" alt="Git" title="Git">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub" title="GitHub">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/git.png" alt="Git" title="Git">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code" title="VS Code">
+                    </div>
+                    <div class="skill-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Apache_NetBeans_Logo.svg" alt="Apache NetBeans" title="Apache NetBeans">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Internship section -->
+<section class="section" id="internship">
+    <div class="container">
+        <h6 class="section-title mb-6"><u>Internship Experience</u></h6>
+        <div class="internship-container">
+        <!-- Slideshow Box -->
+        <div class="slideshow-box">
+            <div class="slideshow-images">
+            <img src="assets/imgs/Intern1(1).png" alt="Image 1">
+            <img src="assets\imgs\Intern1(2).png" alt="Image 2">
+            <img src="assets\imgs\Intern1(3).png " alt="Image 3">
+            <img src="assets\imgs\Intern1(4).png " alt="Image 4">
+            </div>
+        </div>
+        <!-- Right Details -->
+        <div class="internship-details">
+            <h4>Internship at Acmegrade</h4>
+            <p>
+            I completed a cybersecurity internship at Acmegrade, collaborating with a team of four members to strengthen organizational security systems. 
+            My responsibilities included identifying and addressing vulnerabilities using tools like Metasploit, performing network penetration testing, 
+            and implementing remediation strategies. Through this internship, I developed skills in ethical hacking, risk mitigation, and collaborative 
+            problem-solving. This experience not only enhanced my technical expertise but also sharpened my ability to analyze threats and ensure 
+            secure environments.
+            </p>
+        </div>
+        </div>
+
+        <!-- New Slideshow Box for Accolade Internship -->
+    <div class="internship-container">
+        <div class="slideshow-box">
+            <div class="slideshow-images">
+                <img src="assets/imgs/Intern 2(2).png" alt="Image 1">
+                <img src="assets/imgs/Intern 2(3).png" alt="Image 2">
+                <img src="assets/imgs/Intern 2(4).png" alt="Image 3">
+                <img src="assets/imgs/Intern 2(5).png" alt="Image 4">
+            </div>
+        </div>
+        <!-- Right Details for Accolade Internship -->
+        <div class="internship-details">
+            <h4>Internship at Accolade</h4>
+            <p>
+                During my web application development internship at Accolade, I focused on creating responsive and user-friendly interfaces. 
+                My role involved designing and optimizing web pages, integrating APIs for dynamic content, and ensuring cross-browser compatibility. 
+                I collaborated with a multidisciplinary team to implement features that enhanced user experience, including dynamic forms and real-time 
+                updates. This internship allowed me to gain hands-on experience in HTML, CSS, JavaScript, and React.js, and strengthened my skills in 
+                debugging, testing, and agile methodologies.
+            </p>
+        </div>
+    </div>
+    </div>
+    </section>     
+<!-- End of Internship section -->
+
+<!-- Certificates section -->
+<section class="section" id="certificates">
+    <div class="container">
+        <h6 class="section-title mb-6"><u>Certificates</u></h6>
+        <div class="certificates-container">
+            <!-- Slideshow Box for Certificates -->
+            <div class="slideshow-box">
+                <div class="slideshow-images">  
+                    <img src="assets/imgs/udemy.jpg" alt="Certificate 1">
+                    <img src="assets/imgs/certi1.png" alt="Certificate 2">
+                    <img src="assets/imgs/certi2.png" alt="Certificate 3">
+                    <img src="assets/imgs/cert3.png"  alt="Certificate 4">
+                    <img src="assets/imgs/certi4.png" alt="Certificate 5">
+                    <img src="assets/imgs/certi5.png" alt="Certificate 6">
+                    <img src="assets/imgs/certi6.png" alt="Certificate 7">
+                    <img src="assets/imgs/certi 7.png" alt="Certificate 8">
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!-- End of Certificates section -->
+
+<!-- Education section -->
+<section class="section" id="education">
+    <div class="container text-center">
+
+        <h6 class="section-title mb-6"><u>Education</u></h6>
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-4">
+                <a href="#" class="portfolio-card">
+                    <h4>10th</h4>
+                    <img src="assets/imgs/KV.jpg" class="portfolio-card-img"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    <span class="portfolio-card-overlay">
+                        <span class="portfolio-card-caption">
+                            <h4>KV No.1 Panambur</h5>
+                                <p class="font-weight-normal">
+                                    "I completed my 10th grade with a strong academic performance, achieving 80.6% marks. This milestone 
+                                    has laid the foundation for my future academic pursuits and personal growth."</p>
+                        </span>
+                    </span>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="portfolio-card">
+                    <h4>12th</h4>
+                    <img class="portfolio-card-img" src="assets/imgs/KV2.jpeg" class="img-responsive rounded"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    <span class="portfolio-card-overlay">
+                        <span class="portfolio-card-caption">
+                            <h4>KV No.1 Panambur</h5>
+                                <p class="font-weight-normal">
+                                    "I completed my 12th grade in PCMB with a score of 69.6%, gaining a strong foundation in science and mathematics."</p>
+                        </span>
+                    </span>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="portfolio-card">
+                    <h4>BTech</h4>
+                    <img class="portfolio-card-img" src="assets/imgs/Srinivas.jpg" class="img-responsive rounded"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    <span class="portfolio-card-overlay">
+                        <span class="portfolio-card-caption">
+                            <h4>Srinivas University</h5>
+                                <p class="font-weight-normal">"I am pursuing a BTech in Computer Science at Srinivas University with a CGPA of 8.71 Throughout my studies, I have developed strong 
+                                    skills in web development, programming, and software engineering."</p>
+                        </span>
+                    </span>
+                </a>
+            </div>
+        </div><!-- end of row -->
+    </div><!-- end of container -->
+</section> <!-- end of Education section -->
+
+<!-- blog section -->
+<section class="section" id="Achivements">
+    <!-- container -->
+    <div class="container text-center">
+        <h6 class="section-title mb-6"><u>Achivements</u></h6>
+        <!-- blog-wrapper -->
+        <div class="blog-card">
+            <div class="blog-card-header">
+                <img src="assets/imgs/WhatsApp Image 2024-08-29 at 23.21.00_d19d45a4.jpg" class="blog-card-img"
+                    alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+            </div>
+            <div class="blog-card-body">
+                <h5 class="blog-card-title"><u>Office Bearer</u></h6>
+
+                    <p class="blog-card-caption">
+                        <a href="#"></a>
+                    </p>
+                    <p><b>As an <strong>elected member of the Association of Computer Science Engineering (ACE) </strong>during my 2nd year, I played a pivotal role in organizing a wide range of events. 
+                        These included major cultural festivities like Holi and sports events such as Kabaddi, where I was actively involved in planning, coordination, and execution.
+                            My responsibilities extended to managing logistics, coordinating with different teams, and ensuring that events ran smoothly. This experience honed my leadership and organizational skills, 
+                            allowing me to effectively manage multiple tasks, work under pressure, and contribute to the vibrant campus life at Srinivas University. It also gave me the opportunity to work closely with peers, 
+                            enhancing my teamwork and communication abilities.
+                    </b></p>
+            </div>
+        </div><!-- end of blog wrapper -->
+
+        <!-- blog-wrapper -->
+        <div class="blog-card">
+            <div class="blog-card-header">
+                <img src="assets/imgs/kala.jpg" class="blog-card-img"
+                    alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+            </div>
+            <div class="blog-card-body">
+                <h5 class="blog-card-title"><u>Kalaspandana Event</u></h6>
+
+                    <p class="blog-card-caption">
+                        <a href="#"></a>
+
+                    </p>
+
+                    <p><b><strong>Achieved 1st place in the Kalaspandana cultural event at Srinivas University</strong>, Mukka, where I excelled as the anchor. My performance as the event's host was well-received,
+                            showcasing my public speaking and presentation skills. Successfully engaged the audience and maintained the flow of the event, demonstrating confidence and the ability to manage 
+                            a large-scale event. This experience further enhanced my ability to communicate effectively and lead in high-pressure situations.</b>
+                    </p>
+            </div>
+        </div>
+<!-- end of blog wrapper -->
+
+<!-- blog-wrapper -->
+    <div class="blog-card">
+        <div class="blog-card-header">
+            <img src="assets/imgs/cricket.jpg" class="blog-card-img"
+                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+        </div>
+        <div class="blog-card-body">
+            <h5 class="blog-card-title"><u>League Cricket Match</u></h6>
+
+                <p class="blog-card-caption">
+                    <a href="#"></a>
+                </p>
+
+                <p><b>I participated in a league cricket match where our team secured <strong>1st prize in the tournament. I was honored as the Man of the Match in the finale </strong>for my exceptional 
+                    bowling performance, which played a key role in our victory. This experience highlighted my ability to perform under pressure and contribute effectively to a team's success.</b>
+                </p>
+            </div>
+        </div><!-- end of blog wrapper -->
+    </div><!-- end of container -->
+</section>
+<!-- end of blog section -->
+
+<!-- contact section -->
+<form action="#" method="post" class="contact-form col-md-10 col-lg-8 m-auto" name="submit-to-google-sheet">
+<section class="section" id="contact">
+    <div class="container text-center">
+        <p class="section-subtitle">How can you communicate?</p>
+        <h6 class="section-title mb-5"><u>Contact Me</u></h6>
+        <!-- contact form -->
+        <form action="#" method="post" class="contact-form col-md-10 col-lg-8 m-auto" >
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <input type="text" name="name" size="50" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group col-sm-12">
+                    <textarea name="message" id="comment" rows="6" class="form-control" placeholder="Write Something" required></textarea>
+                </div>
+                <div class="form-group col-sm-12 mt-3">
+                    <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">   
+                </div>
+                
+                <div id="loading" style="display:none;">Sending message, please wait...</div>
+            </div>   
+        </form><!-- end of contact form -->
+    </div><!-- end of container -->
+</section><!-- end of contact section -->
+</form>
+
+<!-- page footer -->
+<footer class="footer">
+    <b><strong>Vignesh V J</strong></b>
+</footer>
+
+
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Meyawo js -->
+    <script src="assets/js/meyawo.js"></script>
+    <script>
+
+document.querySelector('a[href="#projects"]').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default jump
+    document.querySelector('#projects').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
+
+  const sliderTrack = document.querySelector('.slider-track');
+let isDragging = false;
+let startX, scrollLeft;
+
+// Mouse down event to start dragging
+sliderTrack.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - sliderTrack.offsetLeft;
+    scrollLeft = sliderTrack.scrollLeft;
+    sliderTrack.style.cursor = 'grabbing';
+});
+
+// Mouse move event to handle dragging
+sliderTrack.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const x = e.pageX - sliderTrack.offsetLeft;
+    const walk = (x - startX) * 5; // Sensitivity for dragging
+    sliderTrack.scrollLeft = scrollLeft - walk;
+
+    // Optionally reset the scroll position to create a circular effect
+    if (sliderTrack.scrollLeft <= 0) {
+        sliderTrack.scrollLeft = sliderTrack.scrollWidth - sliderTrack.offsetWidth;
+    } else if (sliderTrack.scrollLeft >= sliderTrack.scrollWidth - sliderTrack.offsetWidth) {
+        sliderTrack.scrollLeft = 0;
+    }
+});
+
+// Mouse up event to stop dragging
+sliderTrack.addEventListener('mouseup', () => {
+    isDragging = false;
+    sliderTrack.style.cursor = 'grab';
+});
+
+// Mouse leave event to stop dragging when mouse leaves the area
+sliderTrack.addEventListener('mouseleave', () => {
+    isDragging = false;
+    sliderTrack.style.cursor = 'grab';
+});
+
+// Pause the animation when mouse is over
+sliderTrack.addEventListener('mouseover', () => {
+    sliderTrack.style.animationPlayState = 'paused';
+});
+
+// Resume the animation when mouse leaves
+sliderTrack.addEventListener('mouseout', () => {
+    sliderTrack.style.animationPlayState = 'running';
+});
+
+</script>    
+</body>
+</html>
